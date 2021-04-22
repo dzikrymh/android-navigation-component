@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.dzigma.navcomp.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
+    private val args: LoginFragmentArgs by navArgs()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,6 +33,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val userDeepLink = args.username
+        binding.etUsername.setText(userDeepLink)
 
         binding.buttonConfirm.setOnClickListener {
             val username = binding.etUsername.text.toString()
